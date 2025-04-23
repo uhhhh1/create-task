@@ -32,18 +32,20 @@ function calculateGPA() {
         total += letterToGPA(grades[i]);
     }
 
-    let gpa = total / grades.length;
+    let gpa = total / grades.length; // sets the calculation for gpa to the total values for each letter put into the input divided by the amount of letters 
 
-    if (gpa >= 3.5) {
-        message = "Great Job!";
-    } else if (gpa >= 2.5) {
+    if (gpa >= 4.0) {
+        message = "Harvard is calling...";
+    } else if(gpa >= 3.5){
+        message = "You're doing great!";
+    }else if (gpa >= 2.5) {
         message = "You're doing good.";
     } else if (gpa >= 1.0) {
         message = "You might want to study more.";
     } else if (gpa >= 0.1) {
-        message = "how is this even achieveable💔";
+        message = "just drop out already you're so buns...😭";
     }else {
-        message = "just drop out already you're so buns😭";
+        message = "how is this even achieveable💔";
     }
 
     document.getElementById("finalGPA").innerText = `Your Final GPA is a ${gpa.toFixed(2)}. ${message}`;
