@@ -1,44 +1,50 @@
-const grade = document.querySelector('#input-feild');
-var classes;
+let message = ""; // initializing the message variable 
 
 
-function calculateaverage() {
+function letterToGPA(letters) {
+    // Loop to ensure the grade is valid
+    while (true) {
+        letters = letters.trim().toUpperCase(); //removes whitespace and converts the input to uppercase
+        if (letters === "A") return 4.0; // returns a gpa of 4.0 for A
+        else if (letters === "A-") return 3.7; //returns a gpa of 3.7 for A-
+        else if (letters === "B+") return 3.3; //returns a gpa of 3.3 for B+
+        else if (letters === "B") return 3.0; // returns a gpa of 3.0 for B
+        else if (letters === "B-") return 2.7; //returns a gpa of 2.7 for B-
+        else if (letters === "C+") return 2.3; //returns a gpa of 2.3 for C+
+        else if (letters === "C") return 2.0; // returns a gpa of 2.0 for C
+        else if (letters === "C-") return 1.7; // returns a gpa of 1.7 for C-
+        else if (letters === "D") return 1.0; // returns a gpa of 1.0 for D
+        else if (letters === "F") return 0.0; // returns a gpa of 0.0 for F
+        else {
+            // If invalid, prompt the user to re-enter the grade
+            alert(`Invalid grade entered: ${letters}`);
+            return 0; // Exit the loop and return 0 for invalid grades
+        }
+    }
+}
 
-   let finalgrade = (grade/classes) * 100; 
+function calculateGPA() {
+    let input = document.getElementById("gradeHolder").value;
+    let grades = input.split(",");
+    let total = 0;
 
-   if (finalgrade > 92) {
-    gpa = "4.0";
-   }
-   else if (finalgrade > 89){
-    gpa = "3.7";
-   }
-   else if (finalgrade > 85){
-    gpa = "3.3"
-   }
-   else if (finalgrade > 82){
-    gpa = "3.0"
-   }
-   else if (finalgrade > 79){
-    gpa = "2.7";
-   }
-   else if (finalgrade > 76){
-    gpa = "2.3";
-   }
-   else if (finalgrade > 72){
-    gpa = "2.0";
-   }
-   else if (finalgrade > 69){
-    gpa = "1.7";
-   }
-    else if (finalgrade > 66){
-    gpa ="1.3";
-   }
-   else if (finalgrade > 64){
-    gpa = "1.0";
-   }
-   else {
-    gpa = "0.0";
-   }
+    for (let i = 0; i < grades.length; i++) {
+        total += letterToGPA(grades[i]);
+    }
 
-   return gpa; 
-};
+    let gpa = total / grades.length;
+
+    if (gpa >= 3.5) {
+        message = "Great Job!";
+    } else if (gpa >= 2.5) {
+        message = "You're doing good.";
+    } else if (gpa >= 1.0) {
+        message = "You might want to study more.";
+    } else if (gpa >= 0.1) {
+        message = "how is this even achieveable💔";
+    }else {
+        message = "just drop out already you're so buns😭";
+    }
+
+    document.getElementById("finalGPA").innerText = `Your Final GPA is a ${gpa.toFixed(2)}. ${message}`;
+}

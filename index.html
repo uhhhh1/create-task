@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Final GPA Calculator</title>
+    <title> GPA Calculator</title>
 </head>
 <body>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
+    <h2>GPA Calculator</h2>
+    <p>Please enter your grades (in letters) and seperate them by commas:</p>
+    <input type="text" id="gradeHolder" placeholder="Enter your grades here">
+<button type="button" onclick="calculateGPA()">Calculate My GPA!</button>
+    <p id="finalGPA"></p>
 
-    <input type="text" id="input-feild" name="input-feild">
+    <script src="script.js"></script>
 </body>
 </html>
