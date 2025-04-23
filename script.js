@@ -3,7 +3,7 @@ let message = ""; // initializing the message variable
 
 function letterToGPA(letters) {
     // Loop to ensure the grade is valid
-    while (true) {
+    while (true) { 
         letters = letters.trim().toUpperCase(); //removes whitespace and converts the input to uppercase
         if (letters === "A") return 4.0; // returns a gpa of 4.0 for A
         else if (letters === "A-") return 3.7; //returns a gpa of 3.7 for A-
@@ -25,8 +25,8 @@ function letterToGPA(letters) {
 
 function calculateGPA() {
     let input = document.getElementById("gradeHolder").value;
-    let grades = input.split(",");
-    let total = 0;
+    let grades = input.split(","); // seperates the different grades by commas 
+    let total = 0; //
 
     for (let i = 0; i < grades.length; i++) {
         total += letterToGPA(grades[i]);
@@ -34,8 +34,9 @@ function calculateGPA() {
 
     let gpa = total / grades.length; // sets the calculation for gpa to the total values for each letter put into the input divided by the amount of letters 
 
+    // sets different values for the message depending on the final gpa 
     if (gpa >= 4.0) {
-        message = "Harvard is calling...";
+        message = "Harvard is calling vro...";
     } else if(gpa >= 3.5){
         message = "You're doing great!";
     }else if (gpa >= 2.5) {
@@ -48,5 +49,6 @@ function calculateGPA() {
         message = "how is this even achieveable💔";
     }
 
+    // changes the inner html to show the GPA and the message 
     document.getElementById("finalGPA").innerText = `Your Final GPA is a ${gpa.toFixed(2)}. ${message}`;
 }
